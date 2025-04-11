@@ -3,7 +3,6 @@ from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
-@login_required
 def home(request):
     """Home page view
 
@@ -19,3 +18,15 @@ def home(request):
         "user": request.user,
     }
     return render(request, "frontend/index.html", context)
+
+def chatbot(request):
+    return render(request, "frontend/chatbot.html")
+
+def emergency(request):
+    return render(request, "frontend/emergency.html")
+
+def health_education(request):
+    return render(request, "frontend/health_education.html")
+
+def health_news(request):
+    return render(request, "frontend/health_news.html")

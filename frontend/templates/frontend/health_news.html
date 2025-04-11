@@ -1,0 +1,61 @@
+
+{% extends 'components/base.html' %}{% load static %}{% block content %}
+
+    <!-- Blog Details Section Begin -->
+    <section class="blog-details spad">
+        <div class="container">
+            <div class="blog__details__hero set-bg" data-setbg="{% static 'img/blog/details/blog-hero.jpg' %}">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-7 text-center">
+                        <div class="blog__hero__text">
+                            <h2>Here’s how you can get a natural glow this party season</h2>
+                            <ul>
+                                <li><img src="{% static 'img/blog/blog-author.jpg' %}" alt=""> John Doe</li>
+                                <li>Dec 06, 2019</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-8">
+                    <div class="blog__details__social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                        <a href="#"><i class="fa fa-dribbble"></i></a>
+                    </div>
+                    <div class="blog__details__text">
+                        <div class="blog__details__text__item">
+                            <h5>1 - Monkey pox outbreak</h5>
+                            <p>Medications are administered for your comfort during the surgical procedure. The choices
+                                include intravenous sedation and general anesthesia. Your doctor will recommend the best
+                            choice for you.</p>
+                        </div>
+                        <div class="blog__details__text__item">
+                            <h5>2 - Red eye vaccine administration</h5>
+                            <p>Depending on the degree of change you'd like to see, your neck lift choices include a
+                            traditional neck lift incision or a limited incision neck lift.</p>
+                        </div>
+                        <div class="blog__details__text__item">
+                            <h5>3 - SHA is now working</h5>
+                            <p>Incision lines are closed with sutures and perhaps skin glue. Sutures may be dissolving,
+                                or may need to be removed after a few days. Once healed, the incision lines from a neck
+                                lift are usually well concealed within the hairline and in the natural contours of the
+                            ear.</p>
+                        </div>
+                        <div class="blog__details__text__item">
+                            <h5>4 - See the results</h5>
+                            <p>The visible improvements of a neck lift appear as swelling and bruising subside. Your
+                                final neck lift result should not only restore a more youthful and rested appearance,
+                            but also help you feel more confident about yourself.</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Blog Details Section End -->
+     
+{% endblock %}
