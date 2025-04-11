@@ -11,7 +11,6 @@ app_name = "frontend"
 urlpatterns = [
     path("", views.home, name="home"),
     path("chatbot/", views.chatbot, name="chatbot"),
-    path("emergency/", views.emergency, name="emergency"),
     path("health-education/", views.health_education, name="health_education"),
     path("health-news/", views.health_news, name="health_news"),  
     
