@@ -1,315 +1,136 @@
-<!DOCTYPE html>
-<html lang="zxx">
+{% extends 'components/base.html' %} {% block content %}
+<style>
+  body {
+    background: linear-gradient(135deg, #f0f8ff, #e0f7fa);
+    font-family: "Segoe UI", sans-serif;
+  }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Aesthetic Template">
-    <meta name="keywords" content="Aesthetic, unica, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>AFIYAPAL</title>
+  .container {
+    padding-top: 40px;
+  }
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
+  h2 {
+    text-align: center;
+    font-weight: 700;
+    color: #0077b6;
+    margin-bottom: 1rem;
+  }
 
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="{% static 'static/css/bootstrap.min.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'static/css/font-awesome.min.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'static/css/flaticon.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'static/css/nice-select.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'static/css/jquery-ui.min.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'static/css/magnific-popup.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'static/css/owl.carousel.min.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'static/css/slicknav.min.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'static/css/style.css' %}" type="text/css">
-</head>
+  .form-control {
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    transition: all 0.3s ease-in-out;
+  }
 
-<body>
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
+  .form-control:focus {
+    box-shadow: 0 0 10px #00b4d8;
+    border-color: #00b4d8;
+  }
+
+  textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  .btn-primary {
+    border-radius: 50px;
+    padding: 10px 25px;
+    background-color: #0077b6;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: #023e8a;
+  }
+
+  .alert-info {
+    border-radius: 12px;
+    background-color: #caf0f8;
+    color: #023e8a;
+    border-left: 5px solid #0077b6;
+    padding: 1rem;
+    animation: fadeIn 0.6s ease-in-out;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  li {
+    background: #fff;
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+
+  li:hover {
+    transform: scale(1.02);
+    background: #f1faff;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<div class="container vh-100">
+  <h2>🩺 Health Chatbot</h2>
+  <p class="text-center text-muted">
+    <small>
+      ⚠️ Note: This is not a medical diagnosis. Always consult a doctor for
+      health concerns.
+    </small>
+  </p>
+
+  <form method="POST">
+    {% csrf_token %}
+    <div class="mb-4">
+      <label for="symptoms" class="form-label">Describe your symptoms:</label>
+      <textarea
+        class="form-control"
+        id="symptoms"
+        name="symptoms"
+        placeholder="E.g., I'm experiencing headaches and fatigue..."
+        required
+      ></textarea>
     </div>
-
-    <!-- Offcanvas Menu Begin -->
-    <div class="offcanvas-menu-overlay"></div>
-    <div class="offcanvas-menu-wrapper">
-        <div class="offcanvas__logo">
-            <a href="{% url 'frontend:home' }"><img src="{% static 'static/img/logo.png' %}" alt=""></a>
-        </div>
-        <div id="mobile-menu-wrap"></div>
-        <div class="offcanvas__btn">
-            <a href="#" class="primary-btn">Appointment</a>
-        </div>
-        <ul class="offcanvas__widget">
-            <li><i class="fa fa-phone"></i> 1-677-124-44227</li>
-            <li><i class="fa fa-map-marker"></i> Los Angeles Gournadi, 1230 Bariasl</li>
-            <li><i class="fa fa-clock-o"></i> Mon to Sat 9:00am to 18:00pm</li>
-        </ul>
-        <div class="offcanvas__social">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-instagram"></i></a>
-            <a href="#"><i class="fa fa-dribbble"></i></a>
-        </div>
+    <div class="mb-4">
+      <label for="language" class="form-label mx-3"> Preferred Language:</label>
+      <select class="form-control" id="language" name="language">
+        <option value="en">English</option>
+        <option value="sw">Swahili</option>
+      </select>
     </div>
-    <!-- Offcanvas Menu End -->
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary shadow">💬 Submit</button>
+    </div>
+  </form>
 
-    <!-- Header Section Begin -->
-    <header class="header">
-        <div class="header__top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8">
-                        <ul class="header__top__left">
-                            <li><i class="fa fa-phone"></i> 1-677-124-44227</li>
-                            <li><i class="fa fa-map-marker"></i> Los Angeles Gournadi, 1230 Bariasl</li>
-                            <li><i class="fa fa-clock-o"></i> Mon to Sat 9:00am to 18:00pm</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="header__top__right">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-dribbble"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2">
-                    <div class="header__logo">
-                        <a href="./index.html"><img src="{% static 'static/img/logo.png' %}" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-lg-10">
-                    <div class="header__menu__option">
-                        <nav class="header__menu">
-                            <ul>
-                                <li><a href="./index.html">Home</a></li>
-                                <li><a href="./about.html">About</a></li>
-                                <li><a href="./services.html">Services</a></li>
-                                <li class="active"><a href="#">Pages</a>
-                                    <ul class="dropdown">
-                                        <li><a href="./pricing.html">Pricing</a></li>
-                                        <li><a href="./doctor.html">Doctor</a></li>
-                                        <li><a href="./blog-details.html">Blog Details</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="./blog.html">News</a></li>
-                                <li><a href="./emergency.html">Emergency Healthcare</a></li>
-                            </ul>
-                        </nav>
-                        <div class="header__btn">
-                            <a href="#" class="primary-btn">Appointment</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="canvas__open">
-                <i class="fa fa-bars"></i>
-            </div>
-        </div>
-    </header>
-    <!-- Header Section End -->
+  {% if response %}
+  <div class="alert alert-info mt-4">
+    <strong>Chatbot:</strong> {{ response }}
+  </div>
+  {% endif %}
 
-    <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-option spad set-bg" data-setbg="img/breadcrumb-bg.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcrumb__text">
-                        <h2>Our team</h2>
-                        <div class="breadcrumb__links">
-                            <a href="./index.html">Home</a>
-                            <a href="./about.html">About</a>
-                            <span>Doctor</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Breadcrumb Section End -->
-
-    <!-- Doctor Section Begin -->
-    <section class="doctor spad">
-        <div class="container">
-            <div class="doctor__item">
-                <div class="row">
-                    <div class="col-lg-6 order-lg-1">
-                        <div class="doctor__item__pic">
-                            <img src="{% static 'static/img/doctor/doctor-1.jpg' %}" alt="">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 order-lg-2">
-                        <div class="doctor__item__text">
-                            <span>MBBS, MRCP(UK), CCST(DERM)</span>
-                            <h2>Dr Emili Craythorne</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices
-                            gravida. Risus commodo viverra maecenas accumsan.sis. </p>
-                            <ul>
-                                <li><i class="fa fa-check-circle"></i> Routine and medical care</li>
-                                <li><i class="fa fa-check-circle"></i> Excellence in Healthcare every</li>
-                                <li><i class="fa fa-check-circle"></i> Building a healthy environment</li>
-                                <li><i class="fa fa-check-circle"></i> cumsan lacus vel facilisis.</li>
-                            </ul>
-                            <div class="doctor__item__social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa fa-dribbble"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="doctor__item">
-                <div class="row">
-                    <div class="col-lg-6 order-lg-4">
-                        <div class="doctor__item__pic">
-                            <img src="{% static 'static/img/doctor/doctor-2.jpg' %}" alt="">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 order-lg-3">
-                        <div class="doctor__item__text  doctor__item__text--left">
-                            <span>MBBS, MRCP(UK), CCST(DERM)</span>
-                            <h2>Dr Jessica Jones</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices
-                            gravida. Risus commodo viverra maecenas accumsan.sis. </p>
-                            <ul>
-                                <li><i class="fa fa-check-circle"></i> Routine and medical care</li>
-                                <li><i class="fa fa-check-circle"></i> Excellence in Healthcare every</li>
-                                <li><i class="fa fa-check-circle"></i> Building a healthy environment</li>
-                                <li><i class="fa fa-check-circle"></i> cumsan lacus vel facilisis.</li>
-                            </ul>
-                            <div class="doctor__item__social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa fa-dribbble"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="doctor__item">
-                <div class="row">
-                    <div class="col-lg-6 order-lg-5">
-                        <div class="doctor__item__pic">
-                            <img src="{% static 'static/img/doctor/doctor-3.jpg' %}" alt="">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 order-lg-6">
-                        <div class="doctor__item__text">
-                            <span>MBBS, MRCP(UK), CCST(DERM)</span>
-                            <h2>Dr Ahel Natasha</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices
-                            gravida. Risus commodo viverra maecenas accumsan.sis. </p>
-                            <ul>
-                                <li><i class="fa fa-check-circle"></i> Routine and medical care</li>
-                                <li><i class="fa fa-check-circle"></i> Excellence in Healthcare every</li>
-                                <li><i class="fa fa-check-circle"></i> Building a healthy environment</li>
-                                <li><i class="fa fa-check-circle"></i> cumsan lacus vel facilisis.</li>
-                            </ul>
-                            <div class="doctor__item__social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa fa-dribbble"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="doctor__item">
-                <div class="row">
-                    <div class="col-lg-6 order-lg-8">
-                        <div class="doctor__item__pic">
-                            <img src="{% static 'static/img/doctor/doctor-4.jpg' %}" alt="">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 order-lg-7">
-                        <div class="doctor__item__text doctor__item__text--left">
-                            <span>MBBS, MRCP(UK), CCST(DERM)</span>
-                            <h2>Dr Gabriela Beckett</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices
-                            gravida. Risus commodo viverra maecenas accumsan.sis. </p>
-                            <ul>
-                                <li><i class="fa fa-check-circle"></i> Routine and medical care</li>
-                                <li><i class="fa fa-check-circle"></i> Excellence in Healthcare every</li>
-                                <li><i class="fa fa-check-circle"></i> Building a healthy environment</li>
-                                <li><i class="fa fa-check-circle"></i> cumsan lacus vel facilisis.</li>
-                            </ul>
-                            <div class="doctor__item__social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa fa-dribbble"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Doctor Section End -->
-
-    <!-- Footer Section Begin -->
-    <footer class="footer">
-                <div class="col-lg-4 col-md-12 col-sm-6">
-                    <div class="footer__map">
-                        <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48158.305462977965!2d-74.13283844036356!3d41.02757295168286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2e440473470d7%3A0xcaf503ca2ee57958!2sSaddle%20River%2C%20NJ%2007458%2C%20USA!5e0!3m2!1sen!2sbd!4v1575917275626!5m2!1sen!2sbd"
-                        height="190" style="border:0" allowfullscreen=""></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer__copyright">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        <div class="footer__copyright__text">
-                            <p>Copyright &copy; <script>
-                                document.write(new Date().getFullYear());
-                            </script> All rights reserved | This template is made with <i class="fa fa-heart"
-                            aria-hidden="true"></i> by <a href="https://colorlib.com"
-                            target="_blank">Colorlib</a></p>
-                        </div>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </div>
-                    <div class="col-lg-5">
-                        <ul>
-                            <li>All Rights Reserved</li>
-                            <li>Terms & Use</li>
-                            <li>Privacy Policy</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- Footer Section End -->
-
-    <!-- Js Plugins -->
-    <script src="{% static 'static/js/jquery-3.3.1.min.js' %}"></script>
-    <script src="{% static 'static/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'static/js/jquery.magnific-popup.min.js' %}"></script>
-    <script src="{% static 'static/js/masonry.pkgd.min.js' %}"></script>
-    <script src="{% static 'static/js/jquery-ui.min.js' %}"></script>
-    <script src="{% static 'static/js/jquery.nice-select.min.js' %}"></script>
-    <script src="{% static 'static/js/jquery.slicknav.js' %}"></script>
-    <script src="{% static 'static/js/owl.carousel.min.js' %}"></script>
-    <script src="{% static 'static/js/main.js' %}"></script>
-</body>
-
-</html>
+  <h3 class="mt-5">🏥 Nearby Clinics</h3>
+  <ul>
+    {% for clinic in clinics %}
+    <li><strong>{{ clinic.name }}</strong> - {{ clinic.location }}</li>
+    {% empty %}
+    <li>No clinics available. Check back later.</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

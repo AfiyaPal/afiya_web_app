@@ -11,6 +11,7 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
+GEMINI_API_KEY = config('GEMINI_API_KEY')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
@@ -121,6 +122,6 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 LOGIN_URL = 'users:login'
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'frontend:home'
 LOGOUT_REDIRECT_URL = 'users:login'
 

@@ -1,297 +1,467 @@
-{% extends 'components/base.html' %}{% load static %}{% block content %}
+{% extends 'components/base.html' %}
+{% load static %}
+{% block content %}
+<style>
+  body {
+    background: linear-gradient(135deg, #f0f8ff, #e0f7fa);
+    font-family: "Segoe UI", sans-serif;
+  }
 
-    <!-- Hero Section Begin -->
-    <section class="hero spad set-bg" data-setbg="img/hero-bg.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="hero__text">
-                        <span>Eiusmod tempor incididunt </span>
-                        <h2>Take the world's best quality Treadment</h2>
-                        <a href="#" class="primary-btn normal-btn">Contact us</a>
-                    </div>
-                </div>
-            </div>
+  .container {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  h2 {
+    font-weight: 700;
+    color: #0077b6;
+    margin-bottom: 1rem;
+  }
+
+  h5 {
+    color: #023e8a;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .section-title span {
+    color: #00b4d8;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: url("{% static 'img/hero-bg.jpg' %}") no-repeat center center;
+    background-size: cover;
+    padding: 100px 0;
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+  }
+
+  .hero__text h2 {
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .hero__text span {
+    color: #caf0f8;
+    font-size: 1.2rem;
+  }
+
+  /* Consultation Section */
+  .consultation {
+    margin-bottom: 40px;
+  }
+
+  .consultation__form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+
+  .consultation__form:hover {
+    transform: scale(1.02);
+  }
+
+  .consultation__form input,
+  .consultation__form select {
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .consultation__form input:focus,
+  .consultation__form select:focus {
+    box-shadow: 0 0 10px #00b4d8;
+    border-color: #00b4d8;
+    outline: none;
+  }
+
+  .consultation__form .site-btn {
+    border-radius: 50px;
+    padding: 10px 25px;
+    background-color: #0077b6;
+    border: none;
+    color: #fff;
+    transition: background-color 0.3s ease;
+  }
+
+  .consultation__form .site-btn:hover {
+    background-color: #023e8a;
+  }
+
+  .consultation__text {
+    background: #caf0f8;
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 5px solid #0077b6;
+    animation: fadeIn 0.6s ease-in-out;
+  }
+
+  /* Chooseus Section */
+  .chooseus__item {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    text-align: center;
+  }
+
+  .chooseus__item:hover {
+    transform: scale(1.02);
+    background: #f1faff;
+  }
+
+  .chooseus__item img {
+    margin-bottom: 1rem;
+  }
+
+  /* Team Section */
+  .team__item {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    text-align: center;
+  }
+
+  .team__item:hover {
+    transform: scale(1.02);
+    background: #f1faff;
+  }
+
+  .team__item img {
+    border-radius: 12px;
+    margin-bottom: 1rem;
+  }
+
+  .team__item__social a {
+    color: #0077b6;
+    margin: 0 5px;
+    transition: color 0.3s ease;
+  }
+
+  .team__item__social a:hover {
+    color: #023e8a;
+  }
+
+  /* Latest News Section */
+  .latest__item {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+
+  .latest__item:hover {
+    transform: scale(1.02);
+    background: #f1faff;
+  }
+
+  .latest__item h5 a {
+    color: #0077b6;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .latest__item h5 a:hover {
+    color: #023e8a;
+  }
+
+  .latest__btn .primary-btn {
+    border-radius: 50px;
+    padding: 10px 25px;
+    background-color: #0077b6;
+    border: none;
+    color: #fff;
+    transition: background-color 0.3s ease;
+  }
+
+  .latest__btn .primary-btn:hover {
+    background-color: #023e8a;
+  }
+
+  /* Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<!-- Hero Section Begin -->
+<section class="hero spad">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="hero__text">
+          <span>Welcome to AfiyPal</span>
+          <h2>Take the world's best quality Treatment</h2>
         </div>
-    </section>
-    <!-- Hero Section End -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Hero Section End -->
 
-    <!-- Consultation Section Begin -->
-    <section class="consultation">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="consultation__form">
-                        <div class="section-title">
-                            <span>REQUEST FOR YOUR</span>
-                            <h2>Consultation</h2>
-                        </div>
-                        <form action="#">
-                            <input type="text" placeholder="Name">
-                            <input type="text" placeholder="Email">
-                            <div class="datepicker__item">
-                                <input type="text" placeholder="Date" class="datepicker">
-                                <i class="fa fa-calendar"></i>
-                            </div>
-                            <select>
-                                <option value="">Type of service</option>
-                                <option value="">Advanced equipment</option>
-                                <option value="">Qualified doctors</option>
-                                <option value="">Certified services</option>
-                                <option value="">Emergency care</option>
-                            </select>
-                            <button type="submit" class="site-btn">Book appoitment</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-lg-8">
-                    <div class="consultation__text">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6">
-                                <div class="consultation__text__item">
-                                    <div class="section-title">
-                                        <span>Welcon to Aesthetic</span>
-                                        <h2>Find Best Doctors With <b>AESTHETIC</b></h2>
-                                    </div>
-                                    <p>30 Years of experience in Cosmetic Surgery.Lorem ipsum dolor sit amet,
-                                        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                                    dolore magna aliqua.</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <div class="consultation__video set-bg" data-setbg="img/consultation-video.jpg">
-                                    <a href="https://www.youtube.com/watch?v=PXsuI67s2AA" class="play-btn video-popup"><i class="fa fa-play"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<!-- Consultation Section Begin -->
+<section class="consultation">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="consultation__form">
+          <div class="section-title">
+            <span>REQUEST FOR YOUR</span>
+            <h2>Consultation</h2>
+          </div>
+          <form action="#">
+            <input type="text" placeholder="Name" />
+            <input type="text" placeholder="Email" />
+            <div class="datepicker__item">
+              <input type="text" placeholder="Date" class="datepicker" />
+              <i class="fa fa-calendar"></i>
             </div>
+            <select>
+              <option value="">Type of service</option>
+              <option value="">Advanced equipment</option>
+              <option value="">Qualified doctors</option>
+              <option value="">Certified services</option>
+              <option value="">Emergency care</option>
+            </select>
+            <button type="submit" class="site-btn">Book appointment</button>
+          </form>
         </div>
-    </section>
-    <!-- Consultation Section End -->
-
-    <!-- Chooseus Section Begin -->
-    <section class="chooseus spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="section-title">
-                        <span>Why choose us?</span>
-                        <h2>Offer for you</h2>
-                    </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="consultation__text">
+          <div class="row">
+            <div class="col-lg-10 col-md-10">
+              <div class="consultation__text__item">
+                <div class="section-title">
+                  <span>Welcome to AfiyaPal</span>
+                  <h2>Find Best Doctors With <b>AfiyaPal</b></h2>
                 </div>
+                <p>
+                  30 Years of experience in Cosmetic Surgery. Lorem ipsum dolor
+                  sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua.
+                </p>
+              </div>
             </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="chooseus__item">
-                        <img src="{% static 'img/icons/ci-1.png' %}" alt="">
-                        <h5>Advanced equipment</h5>
-                        <p>Lorem ipsum amet, consectetur adipiscing elit, sed do eiusmod tempor cididunt facilisis.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="chooseus__item">
-                        <img src="{% static 'img/icons/ci-2.png' %}" alt="">
-                        <h5>Qualified doctors</h5>
-                        <p>Lorem ipsum amet, consectetur adipiscing elit, sed do eiusmod tempor cididunt facilisis.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="chooseus__item">
-                        <img src="{% static 'img/icons/ci-3.png' %}" alt="">
-                        <h5>Certified services</h5>
-                        <p>Lorem ipsum amet, consectetur adipiscing elit, sed do eiusmod tempor cididunt facilisis.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="chooseus__item">
-                        <img src="{% static 'img/icons/ci-4.png' %}" alt="">
-                        <h5>Emergency care</h5>
-                        <p>Lorem ipsum amet, consectetur adipiscing elit, sed do eiusmod tempor cididunt facilisis.</p>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-    </section>
-    <!-- Chooseus Section End -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Consultation Section End -->
 
-    <!-- Services Section Begin -->
-    <section class="services spad set-bg" data-setbg="img/services-bg.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-8 col-sm-6">
-                    <div class="section-title">
-                        <span>Our services</span>
-                        <h2>Offer for you</h2>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="services__btn">
-                        <a href="#" class="primary-btn">Contact us</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6 col-md-6">
-                    <div class="services__item">
-                        <div class="services__item__icon">
-                            <span class="flaticon-044-aesthetic"></span>
-                        </div>
-                        <div class="services__item__text">
-                            <h5>Body procedures</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor aliqua.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="services__item">
-                        <div class="services__item__icon">
-                            <span class="flaticon-027-beauty"></span>
-                        </div>
-                        <div class="services__item__text">
-                            <h5>Facial Procedures</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor aliqua.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="services__item">
-                        <div class="services__item__icon">
-                            <span class="flaticon-031-anatomy"></span>
-                        </div>
-                        <div class="services__item__text">
-                            <h5>Breast procedures</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor aliqua.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="services__item">
-                        <div class="services__item__icon">
-                            <span class="flaticon-008-abdominoplasty"></span>
-                        </div>
-                        <div class="services__item__text">
-                            <h5>Skin care & Beauty</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor aliqua.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- Chooseus Section Begin -->
+<section class="chooseus spad">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <div class="section-title">
+          <span>Why choose us?</span>
+          <h2>Offer for you</h2>
         </div>
-    </section>
-    <!-- Services Section End -->
-
-    <!-- Team Section Begin -->
-    <section class="team spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="section-title">
-                        <span>Our Team</span>
-                        <h2>Our Expert Doctors</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="team__item">
-                        <img src="{% static 'img/team/team-1.jpg' %}" alt="">
-                        <h5>Caroline Grant</h5>
-                        <span>Plastic surgeon</span>
-                        <div class="team__item__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-dribbble"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="team__item">
-                        <img src="{% static 'img/team/team-2.jpg' %}" alt="">
-                        <h5>Dr. Maria Angel</h5>
-                        <span>Plastic surgeon</span>
-                        <div class="team__item__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-dribbble"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="team__item">
-                        <img src="{% static 'img/team/team-3.jpg' %}" alt="">
-                        <h5>Nathan Mullins</h5>
-                        <span>Plastic surgeon</span>
-                        <div class="team__item__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-dribbble"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="chooseus__item">
+          <img src="{% static 'img/icons/ci-1.png' %}" alt="" />
+          <h5>Advanced equipment</h5>
+          <p>
+            Lorem ipsum amet, consectetur adipiscing elit, sed do eiusmod tempor
+            cididunt facilisis.
+          </p>
         </div>
-    </section>
-    <!-- Team Section End -->
-
-    <!-- Latest News Begin -->
-    <section class="latest spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-8 col-sm-6">
-                    <div class="section-title">
-                        <span>Our News</span>
-                        <h2>Skin care tips</h2>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="latest__btn">
-                        <a href="#" class="primary-btn">View all news</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="latest__item">
-                        <h5><a href="#">Here’s how you can get a natural glow this party season</a></h5>
-                        <p>Lorem ipsum, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-                        <ul>
-                            <li><img src="{% static 'img/blog/blog-author.jpg' %}" alt=""> John Doe</li>
-                            <li>Dec 06, 2019</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="latest__item">
-                        <h5><a href="#">Get better skin with these top 10 tips for skin care</a></h5>
-                        <p>Lorem ipsum, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-                        <ul>
-                            <li><img src="{% static 'img/blog/blog-author.jpg' %}" alt=""> John Doe</li>
-                            <li>Dec 06, 2019</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="latest__item">
-                        <h5><a href="#">8 Ways to Save Your Skin if You Exercise Outside This Winter</a></h5>
-                        <p>Lorem ipsum, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-                        <ul>
-                            <li><img src="{% static 'img/blog/blog-author.jpg' %}" alt=""> John Doe</li>
-                            <li>Dec 06, 2019</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="chooseus__item">
+          <img src="{% static 'img/icons/ci-2.png' %}" alt="" />
+          <h5>Qualified doctors</h5>
+          <p>
+            Lorem ipsum amet, consectetur adipiscing elit, sed do eiusmod tempor
+            cididunt facilisis.
+          </p>
         </div>
-    </section>
-    <!-- Latest News End -->
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="chooseus__item">
+          <img src="{% static 'img/icons/ci-3.png' %}" alt="" />
+          <h5>Certified services</h5>
+          <p>
+            Lorem ipsum amet, consectetur adipiscing elit, sed do eiusmod tempor
+            cididunt facilisis.
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="chooseus__item">
+          <img src="{% static 'img/icons/ci-4.png' %}" alt="" />
+          <h5>Emergency care</h5>
+          <p>
+            Lorem ipsum amet, consectetur adipiscing elit, sed do eiusmod tempor
+            cididunt facilisis.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Chooseus Section End -->
 
-  {% endblock %}
+<!-- Team Section Begin -->
+<section class="team spad">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <div class="section-title">
+          <span>Our Team</span>
+          <h2>Our Expert Doctors</h2thinker than 2rem;
+          border-radius: 12px;
+        }
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="team__item">
+          <img src="{% static 'img/team/team-1.jpg' %}" alt="" />
+          <h5>Caroline Grant</h5>
+          <span>Plastic surgeon</span>
+          <div class="team__item__social">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+            <a href="#"><i class="fa fa-dribbble"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="team__item">
+          <img src="{% static 'img/team/team-2.jpg' %}" alt="" />
+          <h5>Dr. Maria Angel</h5>
+          <span>Plastic surgeon</span>
+          <div class="team__item__social">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+            <a href="#"><i class="fa fa-dribbble"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="team__item">
+          <img src="{% static 'img/team/team-3.jpg' %}" alt="" />
+          <h5>Nathan Mullins</h5>
+          <span>Plastic surgeon</span>
+          <div class="team__item__social">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+            <a href="#"><i class="fa fa-dribbble"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Team Section End -->
+
+<!-- Latest News Begin -->
+<section class="latest spad">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-6">
+        <div class="section-title">
+          <span>Our News</span>
+          <h2>Skin care tips</h2>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-6">
+        <div class="latest__btn">
+          <a href="#" class="primary-btn">View all news</a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="latest__item">
+          <h5>
+            <a href="#">Here’s how you can get a natural glow this party season</a>
+          </h5>
+          <p>
+            Lorem ipsum, consectetur adipiscing elit, sed do eiusmod tempor.
+          </p>
+          <ul>
+            <li>
+              <img src="{% static 'img/blog/blog-author.jpg' %}" alt="" /> John
+              Doe
+            </li>
+            <li>Dec 06, 2019</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="latest__item">
+          <h5>
+            <a href="#">Get better skin with these top 10 tips for skin care</a>
+          </h5>
+          <p>
+            Lorem ipsum, consectetur adipiscing elit, sed do eiusmod tempor.
+          </p>
+          <ul>
+            <li>
+              <img src="{% static 'img/blog/blog-author.jpg' %}" alt="" /> John
+              Doe
+            </li>
+            <li>Dec 06, 2019</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="latest__item">
+          <h5>
+            <a href="#">8 Ways to Save Your Skin if You Exercise Outside This Winter</a>
+          </h5>
+          <p>
+            Lorem ipsum, consectetur adipiscing elit, sed do eiusmod tempor.
+          </p>
+          <ul>
+            <li>
+              <img src="{% static 'img/blog/blog-author.jpg' %}" alt="" /> John
+              Doe
+            </li>
+            <li>Dec 06, 2019</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Latest News End -->
+
+{% endblock %}
