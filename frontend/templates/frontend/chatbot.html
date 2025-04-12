@@ -1,4 +1,5 @@
-{% extends 'components/base.html' %} {% block content %}
+{% extends 'components/base.html' %}
+{% block content %}
 <style>
   body {
     background: linear-gradient(135deg, #f0f8ff, #e0f7fa);
@@ -9,7 +10,8 @@
     padding-top: 40px;
   }
 
-  h2 {
+  h2,
+  h3 {
     text-align: center;
     font-weight: 700;
     color: #0077b6;
@@ -21,6 +23,8 @@
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     padding: 1rem;
     transition: all 0.3s ease-in-out;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .form-control:focus {
@@ -73,19 +77,101 @@
     background: #f1faff;
   }
 
+  /* Markdown menu styles */
+  .language-select-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .language-select-container label[for="language"] {
+    margin-right: 1rem;
+    color: #0077b6;
+    font-weight: 500;
+  }
+
+  .markdown-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .markdown-option {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    margin: 0.25rem 0;
+    border: 1px solid #0077b6;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #023e8a;
+    font-size: 1rem;
+    line-height: 1.5;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .markdown-option:hover {
+    background-color: #f1faff;
+    transform: scale(1.02);
+  }
+
+  .markdown-option input[type="radio"] {
+    display: none;
+  }
+
+  .markdown-option input[type="radio"]:checked+span {
+    font-weight: 700;
+    color: #0077b6;
+    background-color: #caf0f8;
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .markdown-option span {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
   @keyframes fadeIn {
     from {
       opacity: 0;
       transform: translateY(10px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
+
+  @media (max-width: 576px) {
+    .markdown-menu {
+      max-width: 100%;
+    }
+
+    .language-select-container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .language-select-container label[for="language"] {
+      margin-right: 0;
+      margin-bottom: 0.5rem;
+    }
+  }
 </style>
 
-<div class="container vh-100">
+<div class="container">
   <h2>🩺 Health Chatbot</h2>
   <p class="text-center text-muted">
     <small>
@@ -98,20 +184,21 @@
     {% csrf_token %}
     <div class="mb-4">
       <label for="symptoms" class="form-label">Describe your symptoms:</label>
-      <textarea
-        class="form-control"
-        id="symptoms"
-        name="symptoms"
-        placeholder="E.g., I'm experiencing headaches and fatigue..."
-        required
-      ></textarea>
+      <textarea class="form-control" id="symptoms" name="symptoms"
+        placeholder="E.g., I'm experiencing headaches and fatigue..." required></textarea>
     </div>
-    <div class="mb-4">
-      <label for="language" class="form-label mx-3"> Preferred Language:</label>
-      <select class="form-control" id="language" name="language">
-        <option value="en">English</option>
-        <option value="sw">Swahili</option>
-      </select>
+    <div class="language-select-container">
+      <label for="language">Preferred Language:</label>
+      <div class="markdown-menu" role="radiogroup" id="language">
+        <label class="markdown-option">
+          <input type="radio" id="lang-en" name="language" value="en" checked>
+          <span>- English</span>
+        </label>
+        <label class="markdown-option">
+          <input type="radio" id="lang-sw" name="language" value="sw">
+          <span>- Swahili</span>
+        </label>
+      </div>
     </div>
     <div class="text-center">
       <button type="submit" class="btn btn-primary shadow">💬 Submit</button>
@@ -124,13 +211,37 @@
   </div>
   {% endif %}
 
-  <h3 class="mt-5">🏥 Nearby Clinics</h3>
-  <ul>
-    {% for clinic in clinics %}
-    <li><strong>{{ clinic.name }}</strong> - {{ clinic.location }}</li>
-    {% empty %}
-    <li>No clinics available. Check back later.</li>
-    {% endfor %}
-  </ul>
+  <h3 class="mt-5">🏥 Find Nearby Clinics</h3>
+  <form method="POST">
+    {% csrf_token %}
+    <div class="mb-4">
+      <label for="city" class="form-label">Enter City or Constituency:</label>
+      <input type="text" class="form-control" id="city" name="city" placeholder="E.g., Nairobi, Westlands..."
+        required />
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary shadow">🔍 Search Clinics</button>
+    </div>
+  </form>
+
+  {% if clinic_response %}
+  <div class="alert alert-info mt-4">
+    <strong>Clinics:</strong> {{ clinic_response }}
+  </div>
+  {% endif %}
+
+  {% if clinics %}
+  <div class="mt-4">
+    <ul>
+      {% for clinic in clinics %}
+      <li>
+        <strong>{{ clinic.name }}</strong> - {{ clinic.address }}
+      </li>
+      {% empty %}
+      <li>No clinics found. Try searching for a city.</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
 </div>
 {% endblock %}

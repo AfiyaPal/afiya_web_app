@@ -2,185 +2,241 @@
 
 <!DOCTYPE html>
 <html lang="zxx">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Aesthetic Template" />
-    <meta name="keywords" content="Aesthetic, unica, creative, html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>AFIYAPAL</title>
 
-    <!-- Google Font -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Aesthetic Template" />
+  <meta name="keywords" content="Aesthetic, unica, creative, html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>AFIYAPAL</title>
 
-    <!-- Css Styles -->
-    <link
-      rel="stylesheet"
-      href="{% static 'css/bootstrap.min.css' %}"
-      type="text/css"
-    />
-    <link
-      rel="stylesheet"
-      href="{% static 'css/font-awesome.min.css' %}"
-      type="text/css"
-    />
-    <link
-      rel="stylesheet"
-      href="{% static 'css/flaticon.css' %}"
-      type="text/css"
-    />
-    <link
-      rel="stylesheet"
-      href="{% static 'css/nice-select.css' %}"
-      type="text/css"
-    />
-    <link
-      rel="stylesheet"
-      href="{% static 'css/jquery-ui.min.css' %}"
-      type="text/css"
-    />
-    <link
-      rel="stylesheet"
-      href="{% static 'css/magnific-popup.css' %}"
-      type="text/css"
-    />
-    <link
-      rel="stylesheet"
-      href="{% static 'css/owl.carousel.min.css' %}"
-      type="text/css"
-    />
-    <link
-      rel="stylesheet"
-      href="{% static 'css/slicknav.min.css' %}"
-      type="text/css"
-    />
-    <link
-      rel="stylesheet"
-      href="{% static 'css/style.css' %}"
-      type="text/css"
-    />
-  </head>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
 
-  <body>
-    <!-- Page Preloder -->
-    <div id="preloder">
-      <div class="loader"></div>
+  <!-- Css Styles -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css" />
+  <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css" />
+  <link rel="stylesheet" href="{% static 'css/flaticon.css' %}" type="text/css" />
+  <link rel="stylesheet" href="{% static 'css/nice-select.css' %}" type="text/css" />
+  <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}" type="text/css" />
+  <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css" />
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css" />
+  <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+
+  <!-- Custom Styles for Chatbot Theme -->
+  <style>
+    body {
+      background: linear-gradient(135deg, #f0f8ff, #e0f7fa);
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    /* Header and Navigation */
+    .header {
+      background: #fff;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      margin: 20px 0;
+    }
+
+    .header__logo a {
+      color: #0077b6;
+      font-weight: 700;
+      transition: color 0.3s ease;
+    }
+
+    .header__logo a:hover {
+      color: #023e8a;
+      text-decoration: none;
+    }
+
+    .header__menu ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .header__menu ul li {
+      margin: 0 15px;
+    }
+
+    .header__menu ul li a {
+      color: #0077b6;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .header__menu ul li a:hover {
+      color: #023e8a;
+    }
+
+    .header__menu ul li.active a {
+      color: #023e8a;
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+    }
+
+    .header__btn .primary-btn {
+      border-radius: 50px;
+      padding: 10px 25px;
+      background-color: #0077b6;
+      border: none;
+      color: #fff;
+      transition: background-color 0.3s ease;
+    }
+
+    .header__btn .primary-btn:hover {
+      background-color: #023e8a;
+    }
+
+    /* Footer */
+    .footer {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      margin-top: 40px;
+    }
+
+    .footer__copyright__text p {
+      color: #0077b6;
+    }
+
+    .footer__copyright ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .footer__copyright ul li {
+      margin-left: 20px;
+    }
+
+    .footer__copyright ul li a {
+      color: #0077b6;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer__copyright ul li a:hover {
+      color: #023e8a;
+    }
+
+    /* Canvas Menu for Mobile */
+    .canvas__open {
+      color: #0077b6;
+    }
+
+    /* Animation for Content */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Page Preloder -->
+  <div id="preloder">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Header Section Begin -->
+  <header class="header">
+    <div class="header__top"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2">
+          <div class="header__logo">
+            <h3>
+              <a href="{% url 'frontend:home' %}" class="fw-bold">AFIYA PAL</a>
+            </h3>
+          </div>
+        </div>
+        <div class="col-lg-10">
+          <div class="header__menu__option">
+            <nav class="header__menu">
+              <ul>
+                <li class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+                  <a href="{% url 'frontend:home' %}">Home</a>
+                </li>
+                <li class="{% if request.resolver_match.url_name == 'health_news' %}active{% endif %}">
+                  <a href="{% url 'frontend:health_news' %}">Health News</a>
+                </li>
+                <li class="{% if request.resolver_match.url_name == 'health_education' %}active{% endif %}">
+                  <a href="{% url 'frontend:health_education' %}">Health Education</a>
+                </li>
+              </ul>
+            </nav>
+            <div class="header__btn">
+              <a href="{% url 'frontend:chatbot' %}" class="primary-btn">AI Bot</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="canvas__open">
+        <i class="fa fa-bars"></i>
+      </div>
     </div>
+  </header>
+  <!-- Header Section End -->
 
-    <!-- Header Section Begin -->
-    <header class="header">
-      <div class="header__top"></div>
+  {% block content %}
+  {% endblock %}
+
+  <!-- Footer Section Begin -->
+  <footer class="footer">
+    <div class="footer__copyright">
       <div class="container">
         <div class="row">
-          <div class="col-lg-2">
-            <div class="header__logo">
-              <h3>
-                <a href="{% url 'frontend:home' %}" class="fw-bold text-dark"
-                  >AFIYA PAL</a
-                >
-              </h3>
+          <div class="col-lg-7">
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            <div class="footer__copyright__text">
+              <p>
+                Copyright ©
+                <script>
+                  document.write(new Date().getFullYear());
+                </script>
+                All rights reserved | AfiyaPal
+              </p>
             </div>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
           </div>
-          <div class="col-lg-10">
-            <div class="header__menu__option">
-              <nav class="header__menu">
-                <ul>
-                  <li class="active">
-                    <a href="{% url 'frontend:home' %}">Home</a>
-                  </li>
-                  <li>
-                    <a href="{% url 'frontend:health_education' %}"
-                      >Health news</a
-                    >
-                  </li>
-                  <li>
-                    <a href="{% url 'frontend:health_news' %}"
-                      >Health education</a
-                    >
-                  </li>
-                </ul>
-              </nav>
-              <div class="header__btn">
-                <a href="{% url 'frontend:chatbot' %}" class="primary-btn"
-                  >AI Bot</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="canvas__open">
-          <i class="fa fa-bars"></i>
-        </div>
-      </div>
-    </header>
-    <!-- Header Section End -->
-
-    {% block content %} {% endblock %}
-    <!-- Footer Section Begin -->
-
-    <!-- Footer Section Begin -->
-    <script>
-      // Simulate offline cache with localStorage
-      window.onload = function () {
-        if (!navigator.onLine) {
-          let cachedTips = localStorage.getItem("healthTips");
-          if (cachedTips) {
-            document.body.innerHTML +=
-              '<div class="alert alert-info">Offline Mode: ' +
-              cachedTips +
-              "</div>";
-          }
-        } else {
-          localStorage.setItem(
-            "healthTips",
-            "Drink water and rest for better health."
-          );
-        }
-      };
-    </script>
-
-    <footer class="footer">
-      <div class="footer__copyright">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-7">
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-              <div class="footer__copyright__text">
-                <p>
-                  Copyright &copy;
-                  <script>
-                    document.write(new Date().getFullYear());
-                  </script>
-                  All rights reserved | AfiyaPal
-                </p>
-              </div>
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </div>
-            <div class="col-lg-5">
-              <ul>
-                <li>All Rights Reserved</li>
-                <li>Terms & Use</li>
-                <li>Privacy Policy</li>
-              </ul>
-            </div>
+          <div class="col-lg-5">
+            <ul>
+              <li><a href="#">All Rights Reserved</a></li>
+              <li><a href="#">Terms & Use</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
           </div>
         </div>
       </div>
-    </footer>
-    <!-- Footer Section End -->
+    </div>
+  </footer>
+  <!-- Footer Section End -->
 
-    <!-- Js Plugins -->
-    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
-    <script src="{% static 'js/masonry.pkgd.min.js' %}"></script>
-    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
-    <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
-    <script src="{% static 'js/jquery.slicknav.js' %}"></script>
-    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
-    <script src="{% static 'js/main.js' %}"></script>
-  </body>
+  <!-- Js Plugins -->
+  <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'js/masonry.pkgd.min.js' %}"></script>
+  <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+  <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+  <script src="{% static 'js/jquery.slicknav.js' %}"></script>
+  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+
 </html>
