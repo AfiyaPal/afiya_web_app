@@ -125,4 +125,5 @@ LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = 'frontend:home'
 LOGOUT_REDIRECT_URL = 'users:login'
 
-ALLOWED_HOSTS = ['afiyapal.pythonanywhere.com']
+DEBUG = True # Keep False for production
+ALLOWED_HOSTS = ['afiyapal.pythonanywhere.com', '127.0.0.1', 'localhost']
