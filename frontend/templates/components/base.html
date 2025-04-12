@@ -128,6 +128,17 @@
       right: 0;
     }
 
+    .offcanvas-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 24px;
+      color: #0077b6;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      z-index: 10000;
+    }
+
     .offcanvas-menu ul {
       list-style: none;
       padding: 0;
@@ -281,6 +292,9 @@
 
   <!-- Off-Canvas Menu -->
   <div class="offcanvas-menu">
+    <div class="offcanvas-close">
+      <i class="fa fa-times"></i>
+    </div>
     <ul>
       <li class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">
         <a href="{% url 'frontend:home' %}">Home</a>
@@ -351,6 +365,10 @@
 
       // Close menu when a link or button is clicked
       $('.offcanvas-menu a').on('click', function () {
+        $('.offcanvas-menu').removeClass('active');
+      });
+      // Close menu when the X icon is clicked
+      $('.offcanvas-close').on('click', function () {
         $('.offcanvas-menu').removeClass('active');
       });
     });
