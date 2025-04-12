@@ -125,4 +125,4 @@ LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = 'frontend:home'
 LOGOUT_REDIRECT_URL = 'users:login'
 
-ALLOWED_HOSTS = ['https://afiyapal.pythonanywhere.com/']
+ALLOWED_HOSTS = ['afiyapal.pythonanywhere.com']
