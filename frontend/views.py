@@ -91,27 +91,5 @@ def chatbot(request):
         'clinics': clinics,
     })
 
-def health_education(request):
-    """Fetch health education articles from News API."""
-    page = int(request.GET.get('page', 1))
-    page_size = 9
-    api_key = config('NEWS_API_KEY', default='9e102f2b3b62445597925e29d1cb7aee')
-
-    try:
-        url = f'https://newsapi.org/v2/top-headlines?category=health&page={page}&pageSize={page_size}&apiKey={api_key}'
-        response = requests.get(url)
-        response.raise_for_status()
-        data = response.json()
-        articles = data.get('articles', [])
-    except requests.RequestException as e:
-        articles = []
-        print(f"Error fetching news: {e}")  # Use logging in production
-
-    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-        return JsonResponse({'articles': articles})
-
-    return render(request, 'frontend/health_education.html', {'articles': articles})
-
-def health_news(request):
     """Health news page."""
     return render(request, "frontend/health_news.html")

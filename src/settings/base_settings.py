@@ -62,6 +62,7 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = "src.wsgi.application"
 
 
