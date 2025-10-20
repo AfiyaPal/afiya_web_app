@@ -1,16 +1,213 @@
 {% extends "base.html" %}
 
-{% block title %}Coming Soon | AfiyaPal{% endblock %}
+{% load static %}
+
+{% block title %}AfiyaPal{% endblock %}
 
 {% block content %}
-<section class="text-center" data-aos="fade-up">
-    <h1 class="display-4 text-primary fw-bold mb-3">Coming Soon</h1>
-    <p class="lead text-muted">We're working hard to bring you something amazing at <strong>AfiyaPal</strong>.</p>
-    <p class="text-secondary">Stay tuned for health tools, blogs, and AI-powered wellness assistants.</p>
-    
-    <div class="mt-4">
-        <a href="#" class="btn btn-primary me-2">Notify Me</a>
-        <a href="#" class="btn btn-outline-secondary">Learn More</a>
+  <!-- Hero -->
+<header class="hero-slider">
+  <div class="slides">
+    <!-- Slide 1 -->
+    <div class="slide active">
+      <div class="slide-content">
+        <h1>AfiyaPal — your fast, AI-powered symptom guide</h1>
+        <p>Describe how you feel, get probable conditions and the best next steps. Not a diagnosis — but a smart place to start.</p>
+        <a href="symptomschecker.html" class="btn">Start the Symptom Checker</a>
+      </div>
+      <div class="slide-image">
+        <img src="{% static '/img/hero/Symptom-Checker.webp' %}" alt="Symptom Guide Illustration">
+      </div>
     </div>
+
+    <!-- Slide 2 -->
+    <div class="slide">
+      <div class="slide-content">
+        <h1>Health Education</h1>
+        <p>Reliable, evidence-based information and blogs at your fingertips. Stay informed, stay healthy.</p>
+        <a href="education.html" class="btn">Learn about health</a>
+      </div>
+      <div class="slide-image">
+        <img src="{% static '/img/hero/health education.png' %}" alt="Trusted Health">
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide">
+      <div class="slide-content">
+        <h1>Ask a doctor</h1>
+        <p>AfiyaPal has doctors available, offering consultation in real time and whenever you need it.</p>
+        <a href="consultation.html" class="btn">Get Support</a>
+      </div>
+      <div class="slide-image">
+        <img src="{% static '/img/hero/Doctors_consultation.avif' %}" alt="Doctors Health Support">
+      </div>
+    </div>
+  </div>
+
+</header>
+
+<script>
+  let slides = document.querySelectorAll(".slide");
+let current = 0;
+
+function showNextSlide() {
+  let prev = slides[current];
+  prev.classList.remove("active");
+  prev.classList.add("exit");
+
+  current = (current + 1) % slides.length;
+  let next = slides[current];
+  next.classList.add("active");
+
+  // reset previous slide after animation
+  setTimeout(() => prev.classList.remove("exit"), 800);
+}
+
+setInterval(showNextSlide, 5000); // 5s per slide
+
+</script>
+
+  <!-- Features -->
+<section class="chooseus spad">
+  <div class="container">
+    <div class="row">
+      <div class="section-title">
+        <span>Why AfiyaPal?</span>
+        <h2>Your Trusted Health Companion</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="chooseus__item">
+        <img src="{% static '/img/ci-1.png' %}" alt="24/7 Availability Icon" />
+        <h5>Always Available</h5>
+        <p>
+          Access health guidance anytime, anywhere. AfiyaPal is here 24/7 to answer your questions and provide support
+          when you need it most.
+        </p>
+      </div>
+      
+      <div class="chooseus__item">
+        <img src="{% static '/img/ci-2.png' %}" alt="Personalized Advice Icon" />
+        <h5>Personalized Guidance</h5>
+        <p>
+          Get tailored health tips and advice based on your needs. AfiyaPal understands your concerns and offers
+          relevant, easy-to-follow suggestions.
+        </p>
+      </div>
+      
+      <div class="chooseus__item">
+        <img src="{% static '/img/ci-3.png' %}" alt="Reliable Information Icon" />
+        <h5>Trusted Information</h5>
+        <p>
+          Rely on accurate, evidence-based health insights. AfiyaPal delivers clear and trustworthy information to
+          help you make informed decisions.
+        </p>
+      </div>
+      
+        <div class="chooseus__item">
+          <img src="{% static '/img/ci-4.png' %}" alt="User-Friendly Icon" />
+          <h5>Easy to Use</h5>
+          <p>
+            Enjoy a seamless and intuitive experience. AfiyaPal’s friendly interface makes it simple to get answers and
+            stay on top of your health.
+          </p>
+        </div>
+    </div>
+  </div>
 </section>
+
+<!-- Blog Snippet -->
+<section class="home-blogs container">
+  <h2>Top articles and blogs</h2>
+  <div class="blog-grid">
+    <article class="blog-card">
+      <img src="{% static '/img/blogs/Healthy-Eating.jpg' %}" alt="Healthy Eating">
+      <h3>10 Simple Tips for a Balanced Diet</h3>
+      <p>Good nutrition doesn’t have to be complicated. Here’s how to eat smart, without overthinking it...</p>
+      <a href="#" class="btn1">Read More</a>
+    </article>
+
+    <article class="blog-card">
+      <img src="{% static '/img/blogs/Sleep-Health.webp' %}" alt="Sleep Health">
+      <h3>Why Quality Sleep Matters</h3>
+      <p>Lack of sleep affects your body more than you think. Discover the science of rest and recovery...</p>
+      <a href="#" class="btn1">Read More</a>
+    </article>
+
+    <article class="blog-card">
+      <img src="{% static '/img/blogs/mental-health.jpg' %}" alt="Mental Health">
+      <h3>Managing Stress in Daily Life</h3>
+      <p>Stress is unavoidable, but it doesn’t have to control you. Learn practical ways to cope and thrive...</p>
+      <a href="#" class="btn1">Read More</a>
+    </article>
+  </div>
+  <div class="see-all">
+    <a href="education.html" class="btn">See All Articles</a>
+  </div>
+</section>
+
+<!-- Doctors Snippet -->
+<section class="home-doctors container">
+  <h2 style="color: var(--primary-dark);">Consult Our Doctors </h2>
+  <div class="doctor-grid">
+    <div class="doctor-card">
+      <img src="{% static '/img/doctors/doc1.jpg' %}" alt="Dr. John Doe">
+      <h4>Dr. Jane Doe</h4>
+      <p>General Practitioner</p>
+      <a href="consultation.html" class="btn1">Book Consultation</a>
+    </div>
+
+    <div class="doctor-card">
+      <img src="{% static '/img/doctors/doc2.jpg' %}" alt="Dr. Jane Smith">
+      <h4>Dr. John Smith</h4>
+      <p>Cardiologist</p>
+      <a href="consultation.html" class="btn1">Book Consultation</a>
+    </div>
+
+    <div class="doctor-card">
+      <img src="{% static '/img/doctors/doc3.jpg' %}" alt="Dr. Ali Ali">
+      <h4>Dr. Aisha Ali</h4>
+      <p>Psychologist</p>
+      <a href="consultation.html" class="btn1">Book Consultation</a>
+    </div>
+  </div>
+  <div class="see-all">
+    <a href="consultation.html" class="btn">See All Doctors</a>
+  </div>
+</section>
+
+<section class="contact">
+  <form action=""></form>
+</section>
+
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear()
+
+    const form = document.getElementById('checkerForm')
+    const resultDiv = document.getElementById('checkerResult')
+    form.addEventListener('submit', function(e){
+      e.preventDefault()
+      const text = document.getElementById('symptomInput').value.toLowerCase()
+      let conditions = []
+      if(text.includes('fever')) conditions.push({name:'Viral infection (flu?)', score:0.78})
+      if(text.includes('cough')) conditions.push({name:'Upper respiratory infection', score:0.62})
+      if(conditions.length===0) conditions.push({name:'Non-specific symptoms — further evaluation needed', score:0.35})
+
+      const nextSteps = ['Stay hydrated and rest','If symptoms worsen or high fever, seek in-person care','Book a consultation']
+
+      resultDiv.innerHTML = `
+        <div class="card">
+          <h4>Probable conditions</h4>
+          <ul>${conditions.map(c=> `<li>${c.name} — <small>score ${c.score}</small></li>`).join('')}</ul>
+        </div>
+        <div class="card">
+          <h4>Suggested next steps</h4>
+          <ol>${nextSteps.map(s=> `<li>${s}</li>`).join('')}</ol>
+          <a href="#consult" class="btn">Book a Doctor</a>
+        </div>
+      `
+    })
+  </script>
 {% endblock %}
