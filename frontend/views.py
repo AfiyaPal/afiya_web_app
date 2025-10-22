@@ -93,3 +93,9 @@ def chatbot(request):
 
     """Health news page."""
     return render(request, "frontend/health_news.html")
+def blog_list(request):
+    return render(request, 'blogs/blog_list.html')
+
+def blog_detail(request, pk):
+    blog = {"title": pk}
+    return render(request, 'blogs/blog_detail.html')

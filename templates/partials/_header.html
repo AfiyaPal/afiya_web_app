@@ -8,7 +8,8 @@
     <div class="collapse navbar-collapse" id="navbarContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-3">
         <li class="nav-item"><a class="nav-link" href="{% url 'frontend:index' %}">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Blogs</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'frontend:blog_list' %}">Blogs</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'frontend:blog_detail' 1 %}">Blogs</a></li>
         <li class="nav-item"><a class="nav-link" href="{% url 'users:login' %}">Login</a></li>
         <li class="nav-item"><a class="nav-link" href="#">HealthBot</a></li>
       </ul>

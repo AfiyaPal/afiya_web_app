@@ -1,0 +1,216 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AfiyaPal Blog - Health & Wellness Insights</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>AfiyaPal Blog</h1>
+            <p class="tagline">Health & Wellness Insights</p>
+            <p class="description">Expert advice and evidence-based information to help you live your healthiest life</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="category-filter">
+            <h3>Filter by Category</h3>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="all">All</button>
+                <button class="filter-btn" data-category="Mental Health">Mental Health</button>
+                <button class="filter-btn" data-category="Nutrition">Nutrition</button>
+                <button class="filter-btn" data-category="Fitness">Fitness</button>
+                <button class="filter-btn" data-category="Wellness">Wellness</button>
+            </div>
+        </div>
+
+        <div class="blog-grid">
+            <!-- Mental Health Article -->
+            <article class="blog-post" data-category="Mental Health">
+                <a href="blog-detail.html" class="post-link">
+                    <img src="https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Mental Health" class="post-image">
+                </a>
+                <div class="post-content">
+                    <div class="category-time">
+                        <span class="category">Mental Health</span>
+                        <span class="read-time"><i class="far fa-clock"></i> 5 min read</span>
+                    </div>
+                    <h2 class="post-title">
+                        <a href="blog-detail.html" class="post-link">Understanding Mental Health: A Comprehensive Guide</a>
+                    </h2>
+                    <p class="post-excerpt">Mental health is just as important as physical health. Learn about the fundamentals of mental wellness and how to maintain it.</p>
+                    <div class="author-date">
+                        <span class="author">DSJ Dr. Sarah Johnson</span>
+                        <span class="date">March 15, 2025</span>
+                    </div>
+                    <a href="blog-detail.html" class="read-more-btn">Read Full Article</a>
+                </div>
+            </article>
+
+            <!-- Nutrition Article -->
+            <article class="blog-post" data-category="Nutrition">
+                <a href="blog-detail.html" class="post-link">
+                    <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Nutrition" class="post-image">
+                </a>
+                <div class="post-content">
+                    <div class="category-time">
+                        <span class="category">Nutrition</span>
+                        <span class="read-time"><i class="far fa-clock"></i> 4 min read</span>
+                    </div>
+                    <h2 class="post-title">
+                        <a href="blog-detail.html" class="post-link">Nutrition Tips for a Healthier Lifestyle</a>
+                    </h2>
+                    <p class="post-excerpt">Discover evidence-based nutrition advice that can transform your eating habits and improve your overall health.</p>
+                    <div class="author-date">
+                        <span class="author">LM Linda Martinez</span>
+                        <span class="date">March 12, 2025</span>
+                    </div>
+                    <a href="blog-detail.html" class="read-more-btn">Read Full Article</a>
+                </div>
+            </article>
+
+            <!-- Fitness Article -->
+            <article class="blog-post" data-category="Fitness">
+                <a href="blog-detail.html" class="post-link">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Fitness" class="post-image">
+                </a>
+                <div class="post-content">
+                    <div class="category-time">
+                        <span class="category">Fitness</span>
+                        <span class="read-time"><i class="far fa-clock"></i> 6 min read</span>
+                    </div>
+                    <h2 class="post-title">
+                        <a href="blog-detail.html" class="post-link">The Power of Regular Exercise</a>
+                    </h2>
+                    <p class="post-excerpt">Exercise is medicine. Learn how regular physical activity can prevent disease and enhance your quality of life.</p>
+                    <div class="author-date">
+                        <span class="author">MC Michael Chen</span>
+                        <span class="date">March 10, 2025</span>
+                    </div>
+                    <a href="blog-detail.html" class="read-more-btn">Read Full Article</a>
+                </div>
+            </article>
+
+            <!-- Additional Articles -->
+            <article class="blog-post" data-category="Wellness">
+                <a href="blog-detail.html" class="post-link">
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Sleep" class="post-image">
+                </a>
+                <div class="post-content">
+                    <div class="category-time">
+                        <span class="category">Wellness</span>
+                        <span class="read-time"><i class="far fa-clock"></i> 5 min read</span>
+                    </div>
+                    <h2 class="post-title">
+                        <a href="blog-detail.html" class="post-link">Sleep Hygiene: Your Guide to Better Rest</a>
+                    </h2>
+                    <p class="post-excerpt">Quality sleep is essential for health. Discover science-backed strategies to improve your sleep quality.</p>
+                    <div class="author-date">
+                        <span class="author">DEW Dr. Emily White</span>
+                        <span class="date">March 8, 2025</span>
+                    </div>
+                    <a href="blog-detail.html" class="read-more-btn">Read Full Article</a>
+                </div>
+            </article>
+
+            <article class="blog-post" data-category="Mental Health">
+                <a href="blog-detail.html" class="post-link">
+                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Stress Management" class="post-image">
+                </a>
+                <div class="post-content">
+                    <div class="category-time">
+                        <span class="category">Mental Health</span>
+                        <span class="read-time"><i class="far fa-clock"></i> 4 min read</span>
+                    </div>
+                    <h2 class="post-title">
+                        <a href="blog-detail.html" class="post-link">Managing Stress in Modern Life</a>
+                    </h2>
+                    <p class="post-excerpt">Stress is inevitable, but managing it effectively is a skill you can learn. Discover practical stress management techniques.</p>
+                    <div class="author-date">
+                        <span class="author">JT James Thompson</span>
+                        <span class="date">March 5, 2025</span>
+                    </div>
+                    <a href="blog-detail.html" class="read-more-btn">Read Full Article</a>
+                </div>
+            </article>
+
+            <article class="blog-post" data-category="Wellness">
+                <a href="blog-detail.html" class="post-link">
+                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Preventive Health" class="post-image">
+                </a>
+                <div class="post-content">
+                    <div class="category-time">
+                        <span class="category">Wellness</span>
+                        <span class="read-time"><i class="far fa-clock"></i> 6 min read</span>
+                    </div>
+                    <h2 class="post-title">
+                        <a href="blog-detail.html" class="post-link">Preventive Health: The Key to Longevity</a>
+                    </h2>
+                    <p class="post-excerpt">Prevention is better than cure. Learn about essential health screenings and lifestyle choices for a longer, healthier life.</p>
+                    <div class="author-date">
+                        <span class="author">DRK Dr. Robert Kim</span>
+                        <span class="date">March 1, 2025</span>
+                    </div>
+                    <a href="blog-detail.html" class="read-more-btn">Read Full Article</a>
+                </div>
+            </article>
+        </div>
+
+        <!-- Comments Section -->
+        <section class="comments-section">
+            <h2>Share Your Thoughts</h2>
+            <div class="comment-form">
+                <form id="commentForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment">Your Comment or Recommendation</label>
+                        <textarea id="comment" name="comment" rows="5" required placeholder="Share your thoughts, questions, or recommendations..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Post Comment</button>
+                </form>
+            </div>
+            <div class="comments-list" id="commentsList">
+                <!-- Comments will be added here dynamically -->
+                <div class="comment">
+                    <div class="comment-header">
+                        <span class="comment-author">Alex Johnson</span>
+                        <span class="comment-date">April 2, 2025</span>
+                    </div>
+                    <p class="comment-text">This blog has been so helpful for my wellness journey. I'd love to see more articles on mindfulness techniques!</p>
+                </div>
+                <div class="comment">
+                    <div class="comment-header">
+                        <span class="comment-author">Maria Garcia</span>
+                        <span class="comment-date">March 28, 2025</span>
+                    </div>
+                    <p class="comment-text">The nutrition tips completely transformed my eating habits. Thank you for the evidence-based approach!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 AfiyaPal Blog. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>

@@ -14,4 +14,7 @@ urlpatterns = [
 
     # Password Reset Functionality
     path("password-reset-done/", CustomPasswordResetDoneView.as_view(), name="password_reset_done"),
+
+    path("blog/", views.blog_list, name="blog_list"),
+    path("blog/<str:pk>/", views.blog_detail, name="blog_detail")
 ]
